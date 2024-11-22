@@ -27,3 +27,12 @@ body {
   margin: 0;
   font-family: sans-serif;
 }
+
+:root{
+  --title-color: #260F08;
+  --price-color: #C73B0F;
+  --dessert-color: #87635A;
+  --border-button: #AD8A85;
+  --default-button-color: #F5EEEC;
+  --background: #FFFFFF;
+}
