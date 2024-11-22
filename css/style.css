@@ -35,4 +35,7 @@ body {
   --border-button: #AD8A85;
   --default-button-color: #F5EEEC;
   --background: #FFFFFF;
+  --dessert-title: 40px;
+  --dessert-font-button-dessert-mobile: 14px;
+  --desert-font-price-class-dessert-mobile: 16px;
 }
