@@ -181,7 +181,7 @@ body {
   }
 }
 
-.cart-container::after {
+.cart-container-show::after {
   content: "";
   position: absolute;
   background-image: url(../assets/img/icon-add-to-cart.svg);
@@ -325,7 +325,14 @@ body {
   border: 2px solid white;
   border-radius: 100px;
   padding: 3px;
+  filter: brightness(100);
 }
+
+/* @media (hover: hover) {
+  .cart-decrement {
+    filter: brightness(100);
+  }
+} */
 
 .cart-increment {
   background-color: var(--price-color);
@@ -335,6 +342,12 @@ body {
   border-radius: 100px;
   padding: 3px;
 }
+
+/* @media (hover: hover) {
+  .cart-increment {
+    background-color: #ffffff;
+  }
+} */
 
 /* 
 @media screen and (width>768px){}
