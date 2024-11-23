@@ -25,7 +25,8 @@ ul {
 
 body {
   margin: 0;
-  font-family: sans-serif;
+  font-family: "Red Hat Text", sans-serif;
+  background-color: #FCF8F6;
 }
 
 :root{
@@ -37,5 +38,227 @@ body {
   --background: #FFFFFF;
   --dessert-title: 40px;
   --dessert-font-button-dessert-mobile: 14px;
-  --desert-font-price-class-dessert-mobile: 16px;
+  --dessert-font-price-class-dessert-mobile: 16px;
+  --dessert-font-xl: 40px;
+  --dessert-font-l: 24px;
+  --dessert-font-m: 16px;
+  --dessert-font-s: 14px;
+  --dessert-font-Bold: 700;
+  --dessert-font-semiBold: 600;
+  --dessert-font-Regular: 400;
+
 }
+
+
+.container-flex{
+  display: flex;
+  padding-bottom: 107px;
+}
+
+.title-desserts{
+  color: var(--title-color);
+  font-size: var(--dessert-font-xl);
+  font-weight: var(--dessert-font-Bold);
+  margin: 0;
+  padding-top: 144px;
+  padding-left: 14px;
+}
+
+@media screen and (width>768px){
+  .title-desserts{
+  padding-top: 105px;
+  padding-left: 40px;
+  }
+}
+@media screen and (width>1024px){}
+
+/* .container-flex{
+  overflow: hidden;
+} */
+
+.options-filter{
+  display: flex;
+  padding-left: 14px;
+  padding-top: 32px;
+}
+
+@media screen and (width>768px){
+  .options-filter{
+  padding-left: 40px;
+  }
+}
+@media screen and (width>1024px){}
+
+.filter-desserts{
+  width: 76px;
+  height: 34px;
+  border-radius: 20px;
+  margin-right: 18px;
+  background-color: inherit;
+  font-size: var(--dessert-font-s);
+  font-weight: var(--dessert-font-semiBold);
+  color: var(--title-color);
+  border: solid var(--border-button);
+  cursor: pointer;
+}
+
+@media screen and (width>1024px){}
+
+.grid-desserts{
+  padding: 26px 24px 0;
+  display: grid;
+}
+
+@media screen and (width>768px){
+  .grid-desserts{
+    padding: 0;
+    padding-top: 32px;
+    padding-left: 40px;
+    padding-right: 40px;
+    grid-template-columns: repeat(3, 212px);
+    gap: 32px 24px;
+  }
+}
+@media screen and (width>1024px){}
+
+.desserts-flex-column{
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (width>1024px){}
+
+.desserts-img{
+  border-radius: 10px;
+}
+
+@media screen and (width>1024px){}
+
+.margin-img{
+  margin-top: 24px;
+}
+
+@media screen and (width>768px){
+  .margin-img{
+    margin: 0;
+  }
+}
+@media screen and (width>1024px){}
+
+.cart-container{
+  position: relative;
+  width: 160px;
+  height: 44px;
+  background-color: var(--background);
+  border: solid var(--border-button);
+  border-radius: 20px;
+  left: 83px;
+  bottom: 22px;
+  cursor: pointer;
+}
+
+@media screen and (width>768px){
+  .cart-container{
+    left: 26px;
+  }
+}
+@media screen and (width>1024px){}
+
+.cart-container::after{
+  content: "";
+  position: absolute;
+  background-image: url(../assets/img/icon-add-to-cart.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  left: 20px;
+  top: 10px;
+}
+
+@media screen and (width>1024px){}
+
+.description-desserts-margin{
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (width>1024px){}
+
+.description-desserts{
+  padding-bottom: 4px;
+}
+
+.dessert-font-color{
+  font-weight: var(--dessert-font-Regular);
+  font-size: var(--dessert-font-s); 
+  color: var(--dessert-color);
+}
+
+.dessert-class{
+  font-weight: var(--dessert-font-semiBold);
+  font-size: var(--dessert-font-m); 
+  color: var(--title-color);
+}
+
+.dessert-price{
+  font-weight: var(--dessert-font-semiBold);
+  font-size: var(--dessert-font-m); 
+  color: var(--price-color);
+  padding-bottom: 0;
+}
+
+@media screen and (width>1024px){}
+
+/* cart shop */
+
+.empty-cart{
+  display: flex;
+  flex-direction: column;
+  padding: 32px 24px 0;
+}
+
+@media screen and (width>768px){
+  .empty-cart{
+    padding: 79px 50px 0;
+  }
+}
+@media screen and (width>1024px){}
+
+.empty-title{
+  font-weight: var(--dessert-font-Bold);
+  font-size: var(--dessert-font-l);
+  color: var(--price-color);
+  margin: 0;
+  padding: 24px 24px 0 0;
+}
+
+@media screen and (width>1024px){}
+
+.empty-img{
+  padding: 40px 75px 16px 75px;
+}
+
+@media screen and (width>768px){
+  .empty-img{
+  padding: 16px 256px 16px 256px;
+  }
+}
+@media screen and (width>1024px){}
+
+.empty-text{
+  font-weight: var(--dessert-font-semiBold);
+  font-size: var(--dessert-font-s);
+  text-align: center;
+  color: #87635A;
+  padding-bottom: 40px;
+}
+
+@media screen and (width>768px){}
+@media screen and (width>1024px){}
+
+/* 
+@media screen and (width>768px){}
+@media screen and (width>1024px){}
+*/
