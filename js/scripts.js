@@ -34,5 +34,9 @@ const showEventsButton = (effectVisual) => {
   imgBorder.classList.add("border-img-select");
 };
 
+const decreaseButton = () => {};
+
+const increaseButton = () => {};
+
 optionsFilterElement.addEventListener("click", filterSelection);
 containerObjetcsElement.addEventListener("click", containerObjetcs);
