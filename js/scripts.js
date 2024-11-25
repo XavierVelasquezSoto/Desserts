@@ -16,20 +16,37 @@ const filterSelection = (event) => {
   event.target.classList.add("filter-desserts-active");
 };
 
+const cartTextButton = (dessertText, dessertNumber) => {
+  dessertNumber.children[1].textContent = dessertText;
+};
+
 const addToCart = (name, price) => {
   cartContainer.push({ name: name, price: price, quantity: 1 });
   //console.log(cartContainer);
 };
 
-const increaseQuantity = (name) => {
-  console.log(name);
+const increaseQuantity = (name, dessertNumber) => {
+  let dessertText;
   cartContainer = cartContainer.map((product) => {
     if (product.name === name) {
       product.quantity++;
+      dessertText = product.quantity;
+    }
+
+    return product;
+  });
+  //console.log(cartContainer);
+  cartTextButton(dessertText, dessertNumber);
+};
+
+const decreaseQuantity = (name) => {
+  cartContainer = cartContainer.map((product) => {
+    if (product.name === name) {
+      product.quantity--;
     }
     return product;
   });
-  console.log(cartContainer);
+  //console.log(cartContainer);
 };
 
 const showEventsButton = (effectVisual, name, price) => {
@@ -46,9 +63,10 @@ const containerObjetcs = (event) => {
   const type = event.target.dataset.type;
   //console.log(type);
   if (!type) return;
+
   const priceDessert = event.target.dataset.price;
   const nameDessert = event.target.dataset.name;
-  console.log(type);
+
   if (type === "add") {
     showEventsButton(event.target, nameDessert, priceDessert);
     //console.log(event.target.dataset);
@@ -59,17 +77,11 @@ const containerObjetcs = (event) => {
     const priceDessert = event.target.parentElement.dataset.price;
     increaseQuantity(nameDessert, priceDessert);
   } else if (type === "decrease") {
+    const nameDessert = event.target.parentElement.dataset.name;
+    const priceDessert = event.target.parentElement.dataset.price;
+    decreaseQuantity(nameDessert, priceDessert);
   }
 };
-
-/* const decreasePrice = (price) => {
-  const decreasePrice = priceValorContainer.map((decreaseValor) => {
-    if (decreaseValor.name === price) {
-      decreasePrice = decreaseValor--;
-    }
-    console.log(decreasePrice);
-  });
-}; */
 
 optionsFilterElement.addEventListener("click", filterSelection);
 containerObjetcsElement.addEventListener("click", containerObjetcs);
