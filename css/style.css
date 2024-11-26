@@ -25,7 +25,7 @@ ul {
 
 body {
   margin: 0;
-  font-family: "Red Hat Text", sans-serif;
+  font-family: 'Red Hat Text', sans-serif;
   background-color: #fcf8f6;
 }
 
@@ -189,7 +189,7 @@ body {
 }
 
 .cart-container-show::after {
-  content: "";
+  content: '';
   position: absolute;
   background-image: url(../assets/img/icon-add-to-cart.svg);
   background-size: cover;
@@ -436,7 +436,7 @@ body {
   }
 }
 
-.cart-flex-hidden {
+.hide {
   display: none;
 }
 

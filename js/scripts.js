@@ -24,27 +24,47 @@ const cartTextButton = (element, quantity) => {
 
 const addToCart = (name, price) => {
   cartContainer.push({ name: name, price: price, quantity: 1 });
-  //console.log(cartContainer);
+};
+
+const removeFromCart = name => {
+  cartContainer = cartContainer.filter(productCart => {
+    return productCart.name !== name;
+  });
+  console.log(cartContainer);
 };
 
 const increaseQuantity = (element, name) => {
-  let quantity;
-  cartContainer = cartContainer.map(product => {
-    if (product.name === name) {
-      product.quantity++;
-      quantity = product.quantity;
-    }
-
-    return product;
+  const cartProduct = cartContainer.find(product => {
+    return product.name === name;
   });
+  cartProduct.quantity++;
+
   console.log(cartContainer);
 
   //console.log(cartContainer);
-  cartTextButton(element, quantity);
+  cartTextButton(element, cartProduct.quantity);
 };
 
 const decreaseQuantity = (element, name) => {
-  let quantity;
+  console.log(element, name);
+  const cartProduct = cartContainer.find(product => {
+    return product.name === name;
+  });
+
+  if (cartProduct.quantity === 1) {
+    element.previousElementSibling.classList.remove('cart-container-hidden');
+    element.previousElementSibling.previousElementSibling.classList.remove('border-img-select');
+    element.classList.add('hide');
+    element.children[1].textContent = 1;
+    //Eliminar producto del array
+    removeFromCart(name);
+  } else {
+    cartProduct.quantity--;
+  }
+
+  console.log(cartProduct.quantity);
+
+  /*  let quantity;
   cartContainer = cartContainer.map(product => {
     if (product.name === name) {
       product.quantity--;
@@ -52,11 +72,10 @@ const decreaseQuantity = (element, name) => {
     }
 
     return product;
-  });
-  console.log(cartContainer);
+  }); */
 
   //console.log(cartContainer);
-  cartTextButton(element, quantity);
+  cartTextButton(element, cartProduct.quantity);
 };
 
 const showEventsButton = (effectVisual, name, price) => {
@@ -64,7 +83,7 @@ const showEventsButton = (effectVisual, name, price) => {
   buttonHidden.classList.add('cart-container-hidden');
 
   const buttonShow = effectVisual.nextElementSibling; //show button
-  buttonShow.classList.remove('cart-flex-hidden');
+  buttonShow.classList.remove('hide');
 
   const imgBorder = effectVisual.previousElementSibling; //dessert selector border
   imgBorder.classList.add('border-img-select');
