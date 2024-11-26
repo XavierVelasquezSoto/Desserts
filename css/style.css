@@ -262,7 +262,7 @@ body {
   }
 }
 
-.empty-cart {
+.empty-cart-hide {
   display: none;
 }
 
@@ -308,6 +308,10 @@ body {
   display: flex;
   flex-direction: column;
   padding: 32px 24px 28px 24px;
+}
+
+.cart-full-hide {
+  display: none;
 }
 
 .cart-title {

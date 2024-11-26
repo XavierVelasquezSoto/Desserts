@@ -39,8 +39,6 @@ const increaseQuantity = (element, name) => {
   });
   cartProduct.quantity++;
 
-  console.log(cartContainer);
-
   //console.log(cartContainer);
   cartTextButton(element, cartProduct.quantity);
 };
@@ -64,17 +62,6 @@ const decreaseQuantity = (element, name) => {
 
   console.log(cartProduct.quantity);
 
-  /*  let quantity;
-  cartContainer = cartContainer.map(product => {
-    if (product.name === name) {
-      product.quantity--;
-      quantity = product.quantity;
-    }
-
-    return product;
-  }); */
-
-  //console.log(cartContainer);
   cartTextButton(element, cartProduct.quantity);
 };
 
