@@ -1,9 +1,9 @@
-const optionsFilterElement = document.getElementById("options-filter");
-const containerObjetcsElement = document.getElementById("container-objetcs");
+const optionsFilterElement = document.getElementById('options-filter');
+const containerObjetcsElement = document.getElementById('container-objetcs');
 
 let cartContainer = [];
 
-const filterSelection = (event) => {
+const filterSelection = event => {
   event.target.dataset.filters;
   //console.log(event.target.dataset.filters);
   if (!event.target.dataset.filters) {
@@ -11,16 +11,15 @@ const filterSelection = (event) => {
   }
 
   for (const filters of optionsFilterElement.children) {
-    filters.classList.remove("filter-desserts-active");
+    filters.classList.remove('filter-desserts-active');
   }
-  event.target.classList.add("filter-desserts-active");
+  event.target.classList.add('filter-desserts-active');
 };
 
-const cartTextButton = (dessertText, dessertNumber) => {
-  console.log(dessertNumber);
-  console.log(dessertNumber.children);
-  dessertNumber.children[1].textContent = dessertText;
-  console.log(cartTextButton);
+const cartTextButton = (element, quantity) => {
+  console.log(quantity);
+
+  element.children[1].textContent = quantity;
 };
 
 const addToCart = (name, price) => {
@@ -28,71 +27,76 @@ const addToCart = (name, price) => {
   //console.log(cartContainer);
 };
 
-const increaseQuantity = (name, dessertNumber) => {
-  let dessertText;
-  cartContainer = cartContainer.map((product) => {
+const increaseQuantity = (element, name) => {
+  let quantity;
+  cartContainer = cartContainer.map(product => {
     if (product.name === name) {
       product.quantity++;
-      dessertText = product.quantity;
+      quantity = product.quantity;
     }
 
     return product;
   });
+  console.log(cartContainer);
 
   //console.log(cartContainer);
-  cartTextButton(dessertText, dessertNumber);
+  cartTextButton(element, quantity);
 };
 
-const decreaseQuantity = (name) => {
-  cartContainer = cartContainer.map((product) => {
+const decreaseQuantity = (element, name) => {
+  let quantity;
+  cartContainer = cartContainer.map(product => {
     if (product.name === name) {
       product.quantity--;
+      quantity = product.quantity;
     }
 
     return product;
   });
+  console.log(cartContainer);
 
   //console.log(cartContainer);
+  cartTextButton(element, quantity);
 };
 
 const showEventsButton = (effectVisual, name, price) => {
   const buttonHidden = effectVisual; //hidden button
-  buttonHidden.classList.add("cart-container-hidden");
+  buttonHidden.classList.add('cart-container-hidden');
 
   const buttonShow = effectVisual.nextElementSibling; //show button
-  buttonShow.classList.remove("cart-flex-hidden");
+  buttonShow.classList.remove('cart-flex-hidden');
 
   const imgBorder = effectVisual.previousElementSibling; //dessert selector border
-  imgBorder.classList.add("border-img-select");
+  imgBorder.classList.add('border-img-select');
 
   addToCart(name, price);
 };
 
-const containerObjetcs = (event) => {
+const containerObjetcs = event => {
   const type = event.target.dataset.type;
   //console.log(type);
   if (!type) return;
 
-  const nameDessert = event.target.parentElement.dataset.name;
-  const priceDessert = event.target.parentElement.dataset.price;
+  const nameDessert = event.target.dataset.name;
+  const priceDessert = event.target.dataset.price;
 
-  if (type === "add") {
+  if (type === 'add') {
     showEventsButton(event.target, nameDessert, priceDessert);
     //console.log(event.target.dataset);
   }
 
-  if (type === "increase") {
+  if (type === 'increase') {
     const nameDessert = event.target.parentElement.dataset.name;
     const priceDessert = event.target.parentElement.dataset.price;
 
-    increaseQuantity(nameDessert, priceDessert);
-  } else if (type === "decrease") {
+    increaseQuantity(event.target.parentElement, nameDessert, priceDessert);
+  } else if (type === 'decrease') {
     const nameDessert = event.target.parentElement.dataset.name;
     const priceDessert = event.target.parentElement.dataset.price;
 
-    decreaseQuantity(nameDessert, priceDessert);
+    decreaseQuantity(event.target.parentElement, nameDessert, priceDessert);
   }
 };
 
-optionsFilterElement.addEventListener("click", filterSelection);
-containerObjetcsElement.addEventListener("click", containerObjetcs);
+optionsFilterElement.addEventListener('click', filterSelection);
+containerObjetcsElement.addEventListener('click', containerObjetcs);
