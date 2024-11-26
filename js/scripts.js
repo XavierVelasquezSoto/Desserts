@@ -35,6 +35,7 @@ const increaseQuantity = (name, dessertNumber) => {
 
     return product;
   });
+
   //console.log(cartContainer);
   cartTextButton(dessertText, dessertNumber);
 };
@@ -44,18 +45,23 @@ const decreaseQuantity = (name) => {
     if (product.name === name) {
       product.quantity--;
     }
+
     return product;
   });
+
   //console.log(cartContainer);
 };
 
 const showEventsButton = (effectVisual, name, price) => {
   const buttonHidden = effectVisual; //hidden button
   buttonHidden.classList.add("cart-container-hidden");
+
   const buttonShow = effectVisual.nextElementSibling; //show button
   buttonShow.classList.remove("cart-flex-hidden");
+
   const imgBorder = effectVisual.previousElementSibling; //dessert selector border
   imgBorder.classList.add("border-img-select");
+
   addToCart(name, price);
 };
 
@@ -75,10 +81,12 @@ const containerObjetcs = (event) => {
   if (type === "increase") {
     const nameDessert = event.target.parentElement.dataset.name;
     const priceDessert = event.target.parentElement.dataset.price;
+
     increaseQuantity(nameDessert, priceDessert);
   } else if (type === "decrease") {
     const nameDessert = event.target.parentElement.dataset.name;
     const priceDessert = event.target.parentElement.dataset.price;
+
     decreaseQuantity(nameDessert, priceDessert);
   }
 };
