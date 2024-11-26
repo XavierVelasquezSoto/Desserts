@@ -17,7 +17,10 @@ const filterSelection = (event) => {
 };
 
 const cartTextButton = (dessertText, dessertNumber) => {
+  console.log(dessertNumber);
+  console.log(dessertNumber.children);
   dessertNumber.children[1].textContent = dessertText;
+  console.log(cartTextButton);
 };
 
 const addToCart = (name, price) => {
@@ -70,8 +73,8 @@ const containerObjetcs = (event) => {
   //console.log(type);
   if (!type) return;
 
-  const priceDessert = event.target.dataset.price;
-  const nameDessert = event.target.dataset.name;
+  const nameDessert = event.target.parentElement.dataset.name;
+  const priceDessert = event.target.parentElement.dataset.price;
 
   if (type === "add") {
     showEventsButton(event.target, nameDessert, priceDessert);
