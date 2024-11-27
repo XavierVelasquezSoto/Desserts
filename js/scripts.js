@@ -3,6 +3,7 @@ const containerObjetcsElement = document.getElementById('container-objetcs');
 const cartProductsElement = document.getElementById('cart-products');
 const cartImgElement = document.getElementById('cart-img');
 const cartOrderTotalPriceElement = document.getElementById('cart-order-total-price');
+const totalOrderContainerElement = document.getElementById('total-order-container');
 /* alternar comentario de linea = añadir tecla ctrl + }  si no lo tiene*/
 
 let cartContainer = [];
@@ -20,20 +21,55 @@ const filterSelection = event => {
   event.target.classList.add('filter-desserts-active');
 };
 
-const totalValorProducts = () => {
-  const totalProductsPrice = cartContainer.reduce((acc, product) => {
-    return acc + product.quantity;
-  });
-  cartOrderTotalPriceElement.textContent = product.quantity;
-  cartOrderTotalPriceElement.classList.remove('hide');
+//<div class="cart-full cart-full-hide">
+//<h2 class="cart-title">Your Cart (0)</h2>
+//<span class="cart-description-dessert">Classic Tiramisu</span>
+//<div class="cart-total">
+//<span class="cart-add">1x</span>
+//<span class="cart-price">@ $5.50</span>
+//<span class="cart-accumulated-price">$5.50</span>
+//<img
+//class="cart-remove-dessert"
+//src="./assets/img/icon-remove-item.svg"
+//alt=""
+///>
+//</div>
+//<div class="cart-order-flex">
+//<span class="cart-order">Order Total</span>
+//<span class="cart-price-total">$46.50</span>
+//</div>
+//<div class="cart-neutral-green">
+//<img src="./assets/img/icon-carbon-neutral.svg" alt="" />
+//<span class="carbon-neutral">
+//This is a<span class="cart-span-color">carbon-neutral</span> delivery
+//</span>
+//</div>
+//<button class="cart-buy-order">Confirm Order</button>
+//</div>;
+
+const addProducts = () => {
+  const newPrintProducts = document.createElement;
 };
 
 const removeEffectCartAdd = () => {
   cartImgElement.classList.add('hide');
 };
 
-const addEffectCart = () => {
-  cartImgElement.classList.remove('hide');
+const valorProductEffect = () => {
+  if (cartContainer.length === 0) {
+    cartImgElement.classList.remove('hide');
+    totalOrderContainerElement.classList.add('hide');
+  } else {
+    cartImgElement.classList.add('hide');
+    totalOrderContainerElement.classList.remove('hide');
+  }
+};
+
+const totalValorProducts = () => {
+  const totalProductsPrice = cartContainer.reduce((acc, product) => {
+    return acc + product.quantity * product.price;
+  }, 0);
+  return (cartOrderTotalPriceElement.textContent = `$${totalProductsPrice}`);
 };
 
 const cartAddProductsText = () => {
@@ -54,6 +90,8 @@ const addToCart = (name, price) => {
   cartContainer.push({ name: name, price: price, quantity: 1 });
   cartAddProductsText();
   removeEffectCartAdd();
+  totalValorProducts();
+  valorProductEffect();
 };
 
 const removeFromCart = name => {
@@ -61,6 +99,7 @@ const removeFromCart = name => {
     return productCart.name !== name;
   });
   cartAddProductsText();
+  valorProductEffect();
   //console.log(cartContainer);
 };
 
@@ -72,6 +111,7 @@ const increaseQuantity = (element, name) => {
 
   //console.log(cartContainer);
   cartTextButton(element, cartProduct.quantity);
+  totalValorProducts();
 };
 
 const decreaseQuantity = (element, name) => {
@@ -85,12 +125,12 @@ const decreaseQuantity = (element, name) => {
     element.previousElementSibling.previousElementSibling.classList.remove('border-img-select');
     element.classList.add('hide');
     element.children[1].textContent = 1;
-    addEffectCart();
     //Eliminar producto del array
     removeFromCart(name);
   } else {
     cartProduct.quantity--;
     cartAddProductsText();
+    totalValorProducts();
   }
 
   //console.log(cartContainer);
@@ -140,29 +180,3 @@ const containerObjetcs = event => {
 
 optionsFilterElement.addEventListener('click', filterSelection);
 containerObjetcsElement.addEventListener('click', containerObjetcs);
-
-//<div class="cart-full cart-full-hide">
-//<h2 class="cart-title">Your Cart (0)</h2>
-//<span class="cart-description-dessert">Classic Tiramisu</span>
-//<div class="cart-total">
-//<span class="cart-add">1x</span>
-//<span class="cart-price">@ $5.50</span>
-//<span class="cart-accumulated-price">$5.50</span>
-//<img
-//class="cart-remove-dessert"
-//src="./assets/img/icon-remove-item.svg"
-//alt=""
-///>
-//</div>
-//<div class="cart-order-flex">
-//<span class="cart-order">Order Total</span>
-//<span class="cart-price-total">$46.50</span>
-//</div>
-//<div class="cart-neutral-green">
-//<img src="./assets/img/icon-carbon-neutral.svg" alt="" />
-//<span class="carbon-neutral">
-//This is a<span class="cart-span-color">carbon-neutral</span> delivery
-//</span>
-//</div>
-//<button class="cart-buy-order">Confirm Order</button>
-//</div>;
