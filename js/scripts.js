@@ -4,6 +4,7 @@ const cartProductsElement = document.getElementById('cart-products');
 const cartImgElement = document.getElementById('cart-img');
 const cartOrderTotalPriceElement = document.getElementById('cart-order-total-price');
 const totalOrderContainerElement = document.getElementById('total-order-container');
+const accumulateProductsCartElement = document.getElementById('accumulate-products-cart');
 /* alternar comentario de linea = añadir tecla ctrl + }  si no lo tiene*/
 
 let cartContainer = [];
@@ -48,7 +49,12 @@ const filterSelection = event => {
 //</div>;
 
 const addProducts = () => {
-  const newPrintProducts = document.createElement;
+  //const fragment = document.createDocumentFragment()
+  const newPrintProducts = cartContainer.forEach(printProducts => {
+    newPrintProducts = document.createElement('span');
+    newPrintProducts;
+    document.body.append(accumulateProductsCartElement);
+  });
 };
 
 const removeEffectCartAdd = () => {
