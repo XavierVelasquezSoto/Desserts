@@ -18,15 +18,22 @@ const filterSelection = (event) => {
   event.target.classList.add("filter-desserts-active");
 };
 
-const cartAddProductsText = () => {};
+const cartAddProductsText = () => {
+  /* cartContainer.textContent = `Your Cart (${quantity})`; */
+  const addYourCart = cartContainer.reduce((acc, quantity) => {
+    return acc + quantity;
+  });
+  return (cartProductsElement.textContent = addYourCart);
+};
 
 const cartTextButton = (element, quantity) => {
-  console.log(quantity);
+  //console.log(quantity);
 
   element.children[1].textContent = quantity;
 };
 
 const addToCart = (name, price) => {
+  //console.log(cartContainer);
   cartContainer.push({ name: name, price: price, quantity: 1 });
 };
 
@@ -34,7 +41,7 @@ const removeFromCart = (name) => {
   cartContainer = cartContainer.filter((productCart) => {
     return productCart.name !== name;
   });
-  console.log(cartContainer);
+  //console.log(cartContainer);
 };
 
 const increaseQuantity = (element, name) => {
@@ -48,7 +55,7 @@ const increaseQuantity = (element, name) => {
 };
 
 const decreaseQuantity = (element, name) => {
-  console.log(element, name);
+  //console.log(element, name);
   const cartProduct = cartContainer.find((product) => {
     return product.name === name;
   });
@@ -66,7 +73,7 @@ const decreaseQuantity = (element, name) => {
     cartProduct.quantity--;
   }
 
-  console.log(cartProduct.quantity);
+  console.log(cartContainer);
 
   cartTextButton(element, cartProduct.quantity);
 };
@@ -102,6 +109,7 @@ const containerObjetcs = (event) => {
     const priceDessert = event.target.parentElement.dataset.price;
 
     increaseQuantity(event.target.parentElement, nameDessert, priceDessert);
+    cartAddProductsText(event.target.parentElement.nameDessert);
   } else if (type === "decrease") {
     const nameDessert = event.target.parentElement.dataset.name;
     const priceDessert = event.target.parentElement.dataset.price;
