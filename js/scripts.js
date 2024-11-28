@@ -29,7 +29,7 @@ const filterSelection = (event) => {
 };
 
 const addProducts = () => {
-  accumulateProductsCartElement;
+  accumulateProductsCartElement.textContent = "";
   const fragment = document.createDocumentFragment();
   cartContainer.forEach((product) => {
     //
