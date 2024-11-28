@@ -29,8 +29,9 @@ const filterSelection = (event) => {
 };
 
 const addProducts = () => {
+  accumulateProductsCartElement;
   const fragment = document.createDocumentFragment();
-  const productsEach = cartContainer.forEach((product) => {
+  cartContainer.forEach((product) => {
     //
     const newCartFull = document.createElement("div");
     newCartFull.classList.add("cart-full");
@@ -41,7 +42,6 @@ const addProducts = () => {
 
     const newCartTotal = document.createElement("div");
     newCartTotal.classList.add("cart-total");
-    newCartTotal.textContent = ``;
 
     const newCartAdd = document.createElement("span");
     newCartAdd.classList.add("cart-add");
@@ -53,7 +53,9 @@ const addProducts = () => {
 
     const newcartAccumulatedPrice = document.createElement("span");
     newcartAccumulatedPrice.classList.add("cart-accumulated-price");
-    newcartAccumulatedPrice.textContent = `$${product.price * product.price}`;
+    newcartAccumulatedPrice.textContent = `$${
+      product.quantity * product.price
+    }`;
 
     const newCartRemoveDessert = document.createElement("img");
     newCartRemoveDessert.classList.add("cart-remove-dessert");
@@ -78,7 +80,6 @@ const addProducts = () => {
       newcartAccumulatedPrice,
       newCartRemoveDessert
     );
-
     fragment.append(newCartFull, newCartDescriptionDessert, newCartTotal);
   });
   accumulateProductsCartElement.append(fragment);
@@ -160,6 +161,7 @@ const removeFromCart = (name) => {
   });
   cartAddProductsText();
   valorProductEffect();
+  addProducts();
   //console.log(cartContainer);
 };
 
@@ -172,6 +174,7 @@ const increaseQuantity = (element, name) => {
   //console.log(cartContainer);
   cartTextButton(element, cartProduct.quantity);
   totalValorProducts();
+  addProducts();
 };
 
 const decreaseQuantity = (element, name) => {
@@ -193,6 +196,7 @@ const decreaseQuantity = (element, name) => {
     cartProduct.quantity--;
     cartAddProductsText();
     totalValorProducts();
+    addProducts();
   }
 
   //console.log(cartContainer);
